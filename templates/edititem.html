@@ -1,0 +1,31 @@
+<html>
+<head>
+	<!-- <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}"> -->
+	</head>
+	<body>
+
+<h1> Edit Menu Item </h1>
+
+<form action="{{ url_for('editItem',item_id=item.id)}}" method = 'post'>
+
+<dl>
+	<dt>Title:</dt>	<dd><input type ='text' size='30' name='title' value = '{{item.title }}'></dd>
+	<dt>Description:</dt> <dd><textarea name = 'description' rows='5' cols='40' >{{item.description}}</textarea></dd>
+	<dt>Categroy:</dt> <select name="category_id" required="required">
+			{% for i in categories %}
+				{% if i.id == item.category_id %}
+					<option value="{{i.id}}" selected="selected">{{i.name}}</option>
+				{% else %}
+					<option value="{{i.id}}">{{i.name}}</option>
+				{% endif %}
+			{% endfor %}
+		</select>
+</dl>
+
+
+<input type='submit' value='Edit'>
+
+<a href = '{{url_for('describeItem', item_id = item.id)}}'> Cancel </a>
+</form>
+</body>
+</html>

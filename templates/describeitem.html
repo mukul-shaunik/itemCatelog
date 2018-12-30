@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{item.title}}</title>
+</head>
+<body>
+	{{item.title}}<br>
+	{{item.description}}<br>
+	{{item.created_date}}<br>
+	{{item.updated_date}}
+	<div class = "editdeletepane">
+
+		<a href='{{url_for('editItem',item_id=item.id)}}' >Edit</a>
+		<a href='{{url_for('deleteItem', item_id=item.id)}}' >Delete</a>
+	</div>
+
+	<a href="{{url_for('listItems',category_id=item.category_id)}}">Home</a>
+</body>
+</html>
